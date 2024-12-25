@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="card col-md-6 p-4 movie-card">
+        <h2 class="text-center mb-4">Signup</h2>
+        <p class="text-center mb-4">Create an account</p>
+
+        {% if error %}
+            <div class="alert alert-danger">{{ error }}</div>
+        {% endif %}
+
+        <form method="POST" action="{{ url_for('signup') }}">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username" style="color: white;" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="mail">Email:</label>
+                <input type="email" name="email" id="email" style="color: white;" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Set Password:</label>
+                <input type="password" name="password" id="password" style="color: white;" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-success btn-block mt-4">Signup</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+

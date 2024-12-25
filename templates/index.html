@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card col-md-6 p-5" style="background-color: rgba(0, 0, 0, 0.7); color: #fff; border-radius: 10px;">
+        <h1 class="text-center font-weight-bold">Unlimited Movies</h1>
+        <p class="text-center mt-3">Watch anywhere. Get personalized recommendations. Sign up now or log in.</p>
+        
+        <div class="d-flex justify-content-center mt-4">
+            <a href="/signup" class="btn btn-lg mr-3" style="background-color:#b41b16; color: #fff;">Sign Up</a>
+            <a href="/login" class="btn btn-lg" style="background-color:#b41b16; color: #fff;">Log In</a>
+        </div>
+
+        <hr class="mt-5" style="border-color: #b41b16;">
+
+        <p class="text-center text-light">Already have an account? <a href="/login" class="font-weight-bold" style="color: #b41b16;">Sign In</a></p>
+    </div>
+</div>
+{% endblock %}

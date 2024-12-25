@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center" style="color: white;">Profile: {{ user }}</h2>
+
+    <h3 class="mt-4" style="color: white;">Your Rated Movies:</h3>
+    <ul class="list-group">
+        {% if profile.rated_movies %}
+            {% for movie_id, rating in profile.rated_movies.items() %}
+                {% set movie = movies[movies['id'] == movie_id] %}
+                {% if not movie.empty %}
+                    {% set movie = movie.iloc[0] %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center movie-card" 
+                        style="background-color: rgba(0, 0, 0, 0.8); color: #fff; border-radius: 15px; margin-bottom: 10px;">
+                        <div>
+                            <strong style="color: #b41b16;">
+                                <a href="{{ url_for('movie_detail', movie_id=movie.id) }}" style="color: #b41b16;">
+                                    {{ movie.title_x }}
+                                </a>
+                            </strong>
+                            <p class="mb-0" style="color: white;">Genre: {{ movie.genre }}</p>
+                            <p class="mb-0" style="color: white;">Available on: {{ movie.platforms }}</p>
+                        </div>
+                        <span class="badge badge-primary badge-pill" style="background-color: #b41b16;">{{ rating }} stars</span>
+                    </li>
+                {% else %}
+                    <li class="list-group-item">Movie with ID {{ movie_id }} not found.</li>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <li class="list-group-item" style="background-color: rgba(0, 0, 0, 0.8); color: #fff;">
+                You have not rated any movies yet.
+            </li>
+        {% endif %}
+    </ul>
+</div>
+{% endblock %}
